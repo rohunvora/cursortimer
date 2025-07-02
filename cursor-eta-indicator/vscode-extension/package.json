@@ -1,0 +1,64 @@
+{
+  "name": "cursor-eta-status",
+  "displayName": "Cursor ETA Status",
+  "description": "Lightweight ETA/progress indicator for Cursor Agent calls",
+  "version": "0.1.0",
+  "publisher": "cursor-eta",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["cursor", "eta", "progress", "agent"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Cursor ETA Status",
+      "properties": {
+        "cursorETA.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable the ETA status bar"
+        },
+        "cursorETA.alignment": {
+          "type": "string",
+          "enum": ["left", "right"],
+          "default": "left",
+          "description": "Status bar alignment"
+        },
+        "cursorETA.priority": {
+          "type": "number",
+          "default": 100,
+          "description": "Status bar priority (higher = more left)"
+        },
+        "cursorETA.hideDelay": {
+          "type": "number",
+          "default": 5000,
+          "description": "Milliseconds to wait before hiding after completion"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "cursorETA.showDetails",
+        "title": "Show Cursor ETA Details"
+      },
+      {
+        "command": "cursorETA.toggle",
+        "title": "Toggle Cursor ETA Display"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "^18.x",
+    "typescript": "^5.0.0"
+  }
+}
