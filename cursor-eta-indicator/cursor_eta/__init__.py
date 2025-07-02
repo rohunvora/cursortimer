@@ -10,11 +10,15 @@ __author__ = "Your Name"  # TODO: Update with actual author
 __email__ = "your.email@example.com"  # TODO: Update with actual email
 
 from .agent_with_eta import AgentETATracker, AgentWrapper
+from .eta_bridge import ETABridge
 
 __all__ = [
     # Main classes
     "AgentETATracker",
     "AgentWrapper",
+    "ETABridge",
+    # Convenience functions
+    "track_agent",
     # Version info
     "__version__",
     "__author__",
