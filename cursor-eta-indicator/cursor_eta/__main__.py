@@ -144,8 +144,16 @@ def main(args: Optional[list] = None):
         args = sys.argv[1:]
     
     if not args:
-        # Default to basic demo
-        demo_basic()
+        # Show help when no command is given
+        print(f"Cursor ETA v{__version__}")
+        print("\nAvailable commands:")
+        print("  demo        Run basic demo")
+        print("  decorator   Run decorator demo")
+        print("  check       Check installation status")
+        print("  help        Show help message")
+        print("  version     Show version information")
+        print("\nRun 'cursor-eta help' for more information.")
+        sys.exit(0)
     elif args[0] in ["check", "--check", "-c"]:
         check_installation()
     elif args[0] in ["demo", "--demo", "-d"]:
@@ -160,8 +168,11 @@ def main(args: Optional[list] = None):
         print("  decorator   Run decorator demo")
         print("  check       Check installation status")
         print("  help        Show this help message")
+        print("  version     Show version information")
+        sys.exit(0)
     elif args[0] in ["version", "--version", "-v"]:
-        print(f"cursor-eta {__version__}")
+        print(f"cursor-eta version {__version__}")
+        sys.exit(0)
     else:
         print(f"Unknown command: {args[0]}")
         print("Run 'cursor-eta help' for usage information.")

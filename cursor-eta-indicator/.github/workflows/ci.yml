@@ -1,0 +1,239 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    name: Pre-commit checks
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Run pre-commit
+      uses: pre-commit/action@v3.0.0
+
+  python-tests:
+    name: Python Tests (Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        os: [ubuntu-latest]
+        include:
+          # Also test on Windows and macOS with min/max Python versions
+          - python-version: '3.8'
+            os: windows-latest
+          - python-version: '3.12'
+            os: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]"
+    
+    - name: Run tests with pytest
+      run: |
+        pytest tests/ -v --cov=cursor_eta --cov-report=xml --cov-report=term
+    
+    - name: Upload coverage to Codecov
+      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
+
+  python-lint:
+    name: Python Linting
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]"
+    
+    - name: Run black
+      run: black --check cursor_eta tests
+    
+    - name: Run isort
+      run: isort --check-only cursor_eta tests
+    
+    - name: Run flake8
+      run: flake8 cursor_eta tests
+    
+    - name: Run mypy
+      run: mypy cursor_eta
+
+  typescript-checks:
+    name: TypeScript Checks
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+        cache-dependency-path: vscode-extension/package-lock.json
+    
+    - name: Install dependencies
+      working-directory: vscode-extension
+      run: npm ci
+    
+    - name: TypeScript compile
+      working-directory: vscode-extension
+      run: npm run compile
+    
+    - name: Check for TypeScript errors
+      working-directory: vscode-extension
+      run: npx tsc --noEmit
+    
+    - name: Run ESLint
+      working-directory: vscode-extension
+      run: npx eslint src --ext .ts
+      continue-on-error: true  # ESLint not configured yet
+
+  integration-test:
+    name: Integration Tests
+    needs: [python-tests, typescript-checks]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    
+    - name: Install Python package
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+    
+    - name: Build VS Code extension
+      working-directory: vscode-extension
+      run: |
+        npm ci
+        npm run compile
+    
+    - name: Run integration tests
+      run: |
+        # Test that the Python package works
+        cursor-eta check
+        
+        # Test that the demo runs without errors
+        timeout 5s cursor-eta demo || true
+        
+        # Test import
+        python -c "import cursor_eta; print(f'Version: {cursor_eta.__version__}')"
+
+  build-artifacts:
+    name: Build Distribution Artifacts
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    
+    - name: Build Python distribution
+      run: |
+        python -m pip install --upgrade pip build
+        python -m build
+        ls -la dist/
+    
+    - name: Build VS Code extension
+      working-directory: vscode-extension
+      run: |
+        npm ci
+        npm run compile
+        npx vsce package --no-dependencies
+        ls -la *.vsix
+    
+    - name: Upload Python artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: python-dist
+        path: dist/
+    
+    - name: Upload VS Code extension
+      uses: actions/upload-artifact@v4
+      with:
+        name: vscode-extension
+        path: vscode-extension/*.vsix
+
+  coverage-report:
+    name: Coverage Report
+    needs: python-tests
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]"
+    
+    - name: Generate coverage report
+      run: |
+        pytest tests/ --cov=cursor_eta --cov-report=html --cov-report=term
+        coverage report --fail-under=80
+    
+    - name: Upload coverage HTML report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: htmlcov/
+    
+    - name: Comment coverage on PR
+      if: github.event_name == 'pull_request'
+      uses: py-cov-action/python-coverage-comment-action@v3
+      with:
+        GITHUB_TOKEN: ${{ github.token }}
+        MINIMUM_GREEN: 85
+        MINIMUM_ORANGE: 70

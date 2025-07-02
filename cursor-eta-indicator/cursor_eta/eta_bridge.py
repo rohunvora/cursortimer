@@ -1,16 +1,97 @@
 #!/usr/bin/env python3
 """
-Bridge script to demonstrate integration between Python wrapper and VS Code extension.
-This shows how to use the agent_with_eta module in practice.
+Bridge module for communication between Python wrapper and VS Code extension.
+This handles ETA updates and system monitoring.
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-from agent_with_eta import AgentWrapper
-import time
+import json
 import random
+import sys
+import threading
+import time
+from typing import Any, Dict, Optional
+
+try:
+    import psutil
+except ImportError:
+    psutil = None
+
+from .agent_with_eta import AgentWrapper
+
+
+class ETABridge:
+    """Bridge for communication between Python and VS Code extension."""
+    
+    def __init__(self):
+        """Initialize the ETA bridge."""
+        self.is_running = False
+        self._monitor_thread: Optional[threading.Thread] = None
+        self._stop_event = threading.Event()
+        self._update_queue = []
+        
+    def start(self):
+        """Start the bridge monitoring."""
+        if self.is_running:
+            return
+            
+        self.is_running = True
+        self._stop_event.clear()
+        self._monitor_thread = threading.Thread(target=self._monitor_loop, daemon=True)
+        self._monitor_thread.start()
+        
+    def stop(self):
+        """Stop the bridge monitoring."""
+        if not self.is_running:
+            return
+            
+        self.is_running = False
+        self._stop_event.set()
+        
+        if self._monitor_thread:
+            self._monitor_thread.join(timeout=2)
+            
+    def send_update(self, update: Dict[str, Any]):
+        """Send an update to the VS Code extension."""
+        if not self.is_running:
+            return
+            
+        try:
+            # Send update via stdout (captured by VS Code)
+            print(f"ETA_UPDATE:{json.dumps(update, default=str)}", flush=True)
+        except Exception:
+            pass  # Silently ignore JSON encoding errors
+            
+    def _monitor_loop(self):
+        """Monitor system resources and send updates."""
+        while not self._stop_event.is_set():
+            try:
+                if psutil:
+                    cpu_percent = psutil.cpu_percent(interval=0.1)
+                    memory_percent = psutil.virtual_memory().percent
+                    
+                    # Send system update if resources are high
+                    if cpu_percent > 80 or memory_percent > 80:
+                        self.send_update({
+                            "type": "system",
+                            "cpu_percent": cpu_percent,
+                            "memory_percent": memory_percent,
+                            "timestamp": time.time()
+                        })
+                        
+            except Exception:
+                pass  # Ignore monitoring errors
+                
+            # Wait before next check
+            self._stop_event.wait(0.1)
+            
+    def __enter__(self):
+        """Context manager entry."""
+        self.start()
+        return self
+        
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Context manager exit."""
+        self.stop()
 
 
 def example_cursor_agent_task(task_name: str, complexity: str = "medium"):
