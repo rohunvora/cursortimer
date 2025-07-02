@@ -1,48 +1,57 @@
 """
-cursor-eta: Lightweight ETA/progress indicator for Cursor AI agent calls.
+Cursor ETA Indicator - ETA indicators for cursor AI coding tasks.
 
-Zero token overhead progress tracking for long-running LLM operations.
+This package provides ETA (Estimated Time to Arrival) indicators for AI-powered
+coding tasks in Cursor IDE, helping developers track progress and manage expectations.
 """
 
 __version__ = "0.1.0"
-__author__ = "Cursor ETA Contributors"
-__license__ = "MIT"
+__author__ = "Your Name"  # TODO: Update with actual author
+__email__ = "your.email@example.com"  # TODO: Update with actual email
 
 from .agent_with_eta import AgentETATracker, AgentWrapper
 
 __all__ = [
+    # Main classes
     "AgentETATracker",
     "AgentWrapper",
+    # Version info
     "__version__",
+    "__author__",
+    "__email__",
 ]
+
+# Package metadata
+def get_version() -> str:
+    """Get the current version of cursor-eta."""
+    return __version__
 
 # Convenience function for quick usage
 def track_agent(func=None, *, steps=10, duration=30.0, tokens=0):
     """
-    Decorator or context manager for tracking agent progress.
+    Decorator/function to track agent execution with ETA.
     
-    Usage:
-        @track_agent(steps=5, duration=20.0)
-        def my_agent_task():
+    Can be used as a decorator:
+        @track_agent(steps=5, duration=10.0)
+        def my_agent_function():
             ...
             
-        # Or
-        
-        with track_agent(steps=5) as tracker:
-            tracker.update_step(1, "Processing...")
+    Or as a function wrapper:
+        result = track_agent(my_function, steps=5)(arg1, arg2)
     """
-    if func is None:
-        # Used as context manager
-        tracker = AgentETATracker(steps, duration)
-        return tracker
-    else:
-        # Used as decorator
-        wrapper = AgentWrapper()
-        def decorated(*args, **kwargs):
+    def decorator(f):
+        def wrapped(*args, **kwargs):
+            wrapper = AgentWrapper()
             return wrapper.execute_with_eta(
-                func, *args, **kwargs,
+                f, *args, 
                 eta_total_steps=steps,
                 eta_expected_duration=duration,
-                eta_expected_tokens=tokens
+                eta_expected_tokens=tokens,
+                **kwargs
             )
-        return decorated
+        return wrapped
+        
+    if func is None:
+        return decorator
+    else:
+        return decorator(func)

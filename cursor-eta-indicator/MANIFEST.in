@@ -1,0 +1,22 @@
+# Include the README and LICENSE files
+include README.md
+include LICENSE
+
+# Include all Python typed marker files
+recursive-include cursor_eta py.typed
+
+# Include test files for source distribution
+recursive-include tests *.py
+
+# Exclude unnecessary files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.swp
+global-exclude .DS_Store
+global-exclude __pycache__
+prune vscode-extension
+prune demo
+prune .git
+prune .github
+exclude .gitignore
+exclude demo.sh
