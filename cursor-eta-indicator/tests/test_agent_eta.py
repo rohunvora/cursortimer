@@ -11,7 +11,7 @@ from io import StringIO
 import sys
 from unittest.mock import patch, MagicMock
 
-from agent_with_eta import AgentETATracker, AgentWrapper
+from cursor_eta import AgentETATracker, AgentWrapper
 
 
 class TestAgentETATracker(unittest.TestCase):
