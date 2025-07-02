@@ -31,18 +31,23 @@ def track_agent(func=None, *, steps=10, duration=30.0, tokens=0):
         with track_agent(steps=5) as tracker:
             tracker.update_step(1, "Processing...")
     """
-    if func is None:
-        # Used as context manager
-        tracker = AgentETATracker(steps, duration)
-        return tracker
-    else:
-        # Used as decorator
-        wrapper = AgentWrapper()
+    import functools
+    
+    def decorator(f):
+        @functools.wraps(f)
         def decorated(*args, **kwargs):
+            wrapper = AgentWrapper()
             return wrapper.execute_with_eta(
-                func, *args, **kwargs,
+                f, *args, **kwargs,
                 eta_total_steps=steps,
                 eta_expected_duration=duration,
                 eta_expected_tokens=tokens
             )
         return decorated
+    
+    if func is None:
+        # Called with arguments: @track_agent(steps=5)
+        return decorator
+    else:
+        # Called without arguments: @track_agent
+        return decorator(func)
