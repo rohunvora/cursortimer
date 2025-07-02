@@ -1,5 +1,11 @@
 # Cursor ETA Indicator
 
+[![CI](https://github.com/cursor-eta/cursor-eta/actions/workflows/ci.yml/badge.svg)](https://github.com/cursor-eta/cursor-eta/actions/workflows/ci.yml)
+[![PyPI version](https://badge.fury.io/py/cursor-eta.svg)](https://badge.fury.io/py/cursor-eta)
+[![Python Support](https://img.shields.io/pypi/pyversions/cursor-eta.svg)](https://pypi.org/project/cursor-eta/)
+[![codecov](https://codecov.io/gh/cursor-eta/cursor-eta/branch/main/graph/badge.svg)](https://codecov.io/gh/cursor-eta/cursor-eta)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A **lightweight ETA/progress indicator** for Cursor's Agent calls that adds **zero tokens and zero latency** to your LLM requests, while keeping you informed during long-running operations.
 
 ## 🚀 Why This Exists
