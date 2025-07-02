@@ -1,0 +1,176 @@
+name: Publish VS Code Extension
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    name: Build Extension
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    
+    - name: Install dependencies
+      working-directory: vscode-extension
+      run: |
+        npm install
+        npm install -g @vscode/vsce
+    
+    - name: Compile extension
+      working-directory: vscode-extension
+      run: npm run compile
+    
+    - name: Package extension
+      working-directory: vscode-extension
+      run: |
+        vsce package --no-dependencies
+        echo "VSIX_FILE=$(ls *.vsix)" >> $GITHUB_ENV
+    
+    - name: Upload VSIX artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: vsix
+        path: vscode-extension/*.vsix
+
+  test:
+    name: Test Extension
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    
+    - name: Download VSIX
+      uses: actions/download-artifact@v4
+      with:
+        name: vsix
+        path: vscode-extension
+    
+    - name: Test extension installation
+      run: |
+        code --install-extension vscode-extension/*.vsix --force
+        code --list-extensions | grep cursor-eta
+
+  publish-ovsx:
+    name: Publish to Open VSX
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    
+    - name: Download VSIX
+      uses: actions/download-artifact@v4
+      with:
+        name: vsix
+        path: vscode-extension
+    
+    - name: Publish to Open VSX
+      working-directory: vscode-extension
+      env:
+        OVSX_PAT: ${{ secrets.OVSX_TOKEN }}
+      run: |
+        npm install -g ovsx
+        ovsx publish *.vsix -p $OVSX_PAT
+    
+    - name: Verify on Open VSX
+      run: |
+        sleep 30  # Wait for indexing
+        curl -s https://open-vsx.org/api/cursor-eta/cursor-eta | jq '.version'
+
+  publish-vscode:
+    name: Publish to VS Code Marketplace
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    
+    - name: Download VSIX
+      uses: actions/download-artifact@v4
+      with:
+        name: vsix
+        path: vscode-extension
+    
+    - name: Publish to VS Code Marketplace
+      working-directory: vscode-extension
+      env:
+        VSCE_PAT: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+      run: |
+        npm install -g @vscode/vsce
+        vsce publish --packagePath *.vsix -p $VSCE_PAT
+
+  create-release:
+    name: Create GitHub Release
+    needs: [publish-ovsx]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download VSIX
+      uses: actions/download-artifact@v4
+      with:
+        name: vsix
+        path: vscode-extension
+    
+    - name: Extract version
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/v}
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        name: Cursor ETA Indicator v${{ env.VERSION }}
+        body: |
+          ## VS Code Extension Release
+          
+          ### Installation
+          
+          **From Open VSX:**
+          ```bash
+          code --install-extension cursor-eta.cursor-eta
+          ```
+          
+          **From VSIX file:**
+          ```bash
+          code --install-extension cursor-eta-${{ env.VERSION }}.vsix
+          ```
+          
+          ### What's Changed
+          See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/v${{ env.VERSION }}/vscode-extension/CHANGELOG.md) for details.
+          
+        files: vscode-extension/*.vsix
+        draft: false
+        prerelease: false

@@ -1,26 +1,40 @@
 {
-  "name": "cursor-eta-status",
-  "displayName": "Cursor ETA Status",
-  "description": "Lightweight ETA/progress indicator for Cursor Agent calls",
+  "name": "cursor-eta",
+  "displayName": "Cursor ETA Indicator",
+  "description": "Real-time ETA and progress indicators for Cursor AI agent operations",
   "version": "0.1.0",
   "publisher": "cursor-eta",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cursor-eta-indicator"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/cursor-eta-indicator/issues"
+  },
+  "homepage": "https://github.com/yourusername/cursor-eta-indicator#readme",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.74.0"
   },
-  "categories": ["Other"],
-  "keywords": ["cursor", "eta", "progress", "agent"],
+  "categories": ["Other", "Programming Languages", "Visualization"],
+  "keywords": ["cursor", "eta", "progress", "agent", "ai", "timer", "status"],
   "activationEvents": [
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Cursor ETA Status",
+      "title": "Cursor ETA Indicator",
       "properties": {
         "cursorETA.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable/disable the ETA status bar"
+          "description": "Enable/disable the ETA status bar indicator"
         },
         "cursorETA.alignment": {
           "type": "string",
@@ -37,28 +51,53 @@
           "type": "number",
           "default": 5000,
           "description": "Milliseconds to wait before hiding after completion"
+        },
+        "cursorETA.showTokens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show token usage in status bar"
+        },
+        "cursorETA.format": {
+          "type": "string",
+          "default": "$(clock) ETA: {eta} | Step {current}/{total}",
+          "description": "Status bar format string"
         }
       }
     },
     "commands": [
       {
         "command": "cursorETA.showDetails",
-        "title": "Show Cursor ETA Details"
+        "title": "Show Cursor ETA Details",
+        "category": "Cursor ETA"
       },
       {
         "command": "cursorETA.toggle",
-        "title": "Toggle Cursor ETA Display"
+        "title": "Toggle Cursor ETA Display",
+        "category": "Cursor ETA"
+      },
+      {
+        "command": "cursorETA.reset",
+        "title": "Reset Cursor ETA",
+        "category": "Cursor ETA"
       }
     ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.74.0",
     "@types/node": "^18.x",
+    "@vscode/vsce": "^2.22.0",
     "typescript": "^5.0.0"
+  },
+  "vsce": {
+    "dependencies": false
   }
 }
