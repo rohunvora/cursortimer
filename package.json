@@ -1,0 +1,24 @@
+{
+  "name": "bare-minimum",
+  "version": "1.0.0",
+  "description": "Elite lifestyle calculator - What does your tier really cost?",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/bare-minimum.git"
+  },
+  "keywords": [
+    "lifestyle",
+    "calculator",
+    "shopping",
+    "cart",
+    "ecommerce"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "homepage": "https://bareminimum.xyz"
+}

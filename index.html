@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bare Minimum - Elite Lifestyle Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        
+        .header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 8px 12px;
+            border: 1px solid #000;
+            font-size: 14px;
+        }
+        
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-chip {
+            padding: 6px 12px;
+            border: 1px solid #000;
+            background: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        
+        .filter-chip:hover {
+            background: #f0f0f0;
+        }
+        
+        .filter-chip.active {
+            background: #000;
+            color: #fff;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .product-card {
+            border: 1px solid #000;
+            padding: 16px;
+            background: #fff;
+        }
+        
+        .product-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .product-card .category {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .product-card .price {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .product-card .variants {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        
+        .add-btn {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #000;
+            background: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        
+        .add-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        .cart-drawer {
+            border: 2px solid #000;
+            padding: 16px;
+            position: sticky;
+            top: 16px;
+            height: fit-content;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .cart-header h2 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .layer-toggles {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .layer-toggle {
+            padding: 4px 8px;
+            border: 1px solid #000;
+            background: #fff;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .layer-toggle.active {
+            background: #000;
+            color: #fff;
+        }
+        
+        .cart-items {
+            margin-bottom: 16px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item .name {
+            font-size: 12px;
+            flex: 1;
+        }
+        
+        .cart-item .price {
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .cart-summary {
+            border-top: 1px solid #000;
+            padding-top: 16px;
+        }
+        
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        .summary-line.total {
+            font-weight: 700;
+            font-size: 14px;
+            border-top: 1px solid #000;
+            padding-top: 8px;
+        }
+        
+        .cart-actions {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .cart-btn {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #000;
+            background: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        
+        .cart-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        .cart-btn.primary {
+            background: #000;
+            color: #fff;
+        }
+        
+        .cart-btn.primary:hover {
+            background: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-drawer {
+                position: static;
+                margin-top: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bare Minimum</h1>
+            <p>Elite lifestyle calculator • What does your tier really cost?</p>
+        </div>
+        
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search items..." id="searchInput">
+            <div class="filter-chips">
+                <button class="filter-chip active" data-category="all">All</button>
+                <button class="filter-chip" data-category="luxury">Luxury</button>
+                <button class="filter-chip" data-category="housing">Housing</button>
+                <button class="filter-chip" data-category="transport">Transport</button>
+                <button class="filter-chip" data-category="services">Services</button>
+                <button class="filter-chip" data-category="lifestyle">Lifestyle</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="product-grid" id="productGrid"></div>
+            
+            <div class="cart-drawer">
+                <div class="cart-header">
+                    <h2>Your Basket</h2>
+                    <span id="itemCount">0 items</span>
+                </div>
+                
+                <div class="layer-toggles">
+                    <button class="layer-toggle" id="marriedToggle">Married</button>
+                    <select class="layer-toggle" id="kidsSelect">
+                        <option value="0">No Kids</option>
+                        <option value="1">1 Kid</option>
+                        <option value="2">2 Kids</option>
+                        <option value="3">3 Kids</option>
+                    </select>
+                </div>
+                
+                <div class="cart-items" id="cartItems"></div>
+                
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Layer Multiplier:</span>
+                        <span id="layerMultiplier">1x</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Added Items:</span>
+                        <span id="addedItems">$0</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span>TOTAL:</span>
+                        <span id="total">$0</span>
+                    </div>
+                </div>
+                
+                <div class="cart-actions">
+                    <button class="cart-btn primary">PLACE ORDER</button>
+                    <button class="cart-btn" id="surpriseBtn">SURPRISE ME</button>
+                    <button class="cart-btn">SHARE RECEIPT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Product data following the schema from milestone #1
+        const products = [
+            {
+                id: 'hermes-birkin',
+                name: 'Hermès Birkin 30cm',
+                category: 'luxury',
+                price: 15000,
+                img_url: '',
+                spouse_variant_price: 15000,
+                kid_variant_price: null
+            },
+            {
+                id: 'rolex-submariner',
+                name: 'Rolex Submariner',
+                category: 'luxury',
+                price: 12000,
+                img_url: '',
+                spouse_variant_price: 12000,
+                kid_variant_price: null
+            },
+            {
+                id: 'penthouse-manhattan',
+                name: 'Manhattan Penthouse',
+                category: 'housing',
+                price: 25000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'private-jet-share',
+                name: 'Private Jet Share',
+                category: 'transport',
+                price: 8000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'personal-chef',
+                name: 'Personal Chef',
+                category: 'services',
+                price: 6000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'yacht-membership',
+                name: 'Yacht Club Membership',
+                category: 'lifestyle',
+                price: 15000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'lamborghini-huracan',
+                name: 'Lamborghini Huracán',
+                category: 'transport',
+                price: 22000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'personal-trainer',
+                name: 'Personal Trainer',
+                category: 'services',
+                price: 3000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'wine-collection',
+                name: 'Premium Wine Collection',
+                category: 'luxury',
+                price: 5000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'private-school',
+                name: 'Private School Tuition',
+                category: 'services',
+                price: 35000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: 35000
+            },
+            {
+                id: 'nanny-service',
+                name: 'Full-time Nanny',
+                category: 'services',
+                price: 45000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: 45000
+            },
+            {
+                id: 'engagement-ring',
+                name: 'Engagement Ring',
+                category: 'luxury',
+                price: 15000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'wedding-package',
+                name: 'Luxury Wedding',
+                category: 'lifestyle',
+                price: 25000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'art-collection',
+                name: 'Contemporary Art Collection',
+                category: 'luxury',
+                price: 50000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'country-club',
+                name: 'Country Club Membership',
+                category: 'lifestyle',
+                price: 8000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'tesla-model-s',
+                name: 'Tesla Model S Plaid',
+                category: 'transport',
+                price: 12000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'home-theater',
+                name: 'Home Theater System',
+                category: 'lifestyle',
+                price: 15000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'ski-house',
+                name: 'Aspen Ski House',
+                category: 'housing',
+                price: 18000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'business-class',
+                name: 'Business Class Travel',
+                category: 'transport',
+                price: 4000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            },
+            {
+                id: 'spa-membership',
+                name: 'Luxury Spa Membership',
+                category: 'services',
+                price: 3000,
+                img_url: '',
+                spouse_variant_price: null,
+                kid_variant_price: null
+            }
+        ];
+
+        // State management
+        let cart = [];
+        let isMarried = false;
+        let numberOfKids = 0;
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        // DOM elements
+        const productGrid = document.getElementById('productGrid');
+        const cartItems = document.getElementById('cartItems');
+        const itemCount = document.getElementById('itemCount');
+        const subtotal = document.getElementById('subtotal');
+        const layerMultiplier = document.getElementById('layerMultiplier');
+        const addedItems = document.getElementById('addedItems');
+        const total = document.getElementById('total');
+        const marriedToggle = document.getElementById('marriedToggle');
+        const kidsSelect = document.getElementById('kidsSelect');
+        const searchInput = document.getElementById('searchInput');
+        const surpriseBtn = document.getElementById('surpriseBtn');
+
+        // Initialize the app
+        function init() {
+            renderProducts();
+            setupEventListeners();
+            updateCart();
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            // Search
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                renderProducts();
+            });
+
+            // Filter chips
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentFilter = e.target.dataset.category;
+                    renderProducts();
+                });
+            });
+
+            // Married toggle
+            marriedToggle.addEventListener('click', () => {
+                isMarried = !isMarried;
+                marriedToggle.classList.toggle('active', isMarried);
+                updateCart();
+            });
+
+            // Kids select
+            kidsSelect.addEventListener('change', (e) => {
+                numberOfKids = parseInt(e.target.value);
+                updateCart();
+            });
+
+            // Surprise me button
+            surpriseBtn.addEventListener('click', () => {
+                addRandomItems();
+            });
+        }
+
+        // Render products
+        function renderProducts() {
+            const filteredProducts = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery) || 
+                                    product.category.toLowerCase().includes(searchQuery);
+                const matchesFilter = currentFilter === 'all' || product.category === currentFilter;
+                return matchesSearch && matchesFilter;
+            });
+
+            productGrid.innerHTML = filteredProducts.map(product => {
+                const variants = [];
+                if (product.spouse_variant_price) {
+                    variants.push(`Spouse: $${product.spouse_variant_price.toLocaleString()}`);
+                }
+                if (product.kid_variant_price) {
+                    variants.push(`Per Kid: $${product.kid_variant_price.toLocaleString()}`);
+                }
+
+                return `
+                    <div class="product-card">
+                        <div class="category">${product.category.toUpperCase()}</div>
+                        <h3>${product.name}</h3>
+                        <div class="price">$${product.price.toLocaleString()}</div>
+                        ${variants.length > 0 ? `<div class="variants">${variants.join(' • ')}</div>` : ''}
+                        <button class="add-btn" onclick="addToCart('${product.id}')">ADD TO CART</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                cart.push(product);
+                updateCart();
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Update cart display and calculations
+        function updateCart() {
+            // Render cart items
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <div class="name">${item.name}</div>
+                    <div class="price">$${item.price.toLocaleString()}</div>
+                    <button onclick="removeFromCart(${index})" style="margin-left: 8px; background: none; border: none; cursor: pointer;">×</button>
+                </div>
+            `).join('');
+
+            // Calculate totals
+            const baseSubtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            let forcedAdds = 0;
+            let multiplier = 1;
+
+            // Married layer logic
+            if (isMarried) {
+                // Add engagement ring and wedding if not already in cart
+                if (!cart.find(item => item.id === 'engagement-ring')) {
+                    forcedAdds += 15000; // Engagement ring
+                }
+                if (!cart.find(item => item.id === 'wedding-package')) {
+                    forcedAdds += 25000; // Wedding
+                }
+                multiplier = 2; // Double the basket
+            }
+
+            // Kids layer logic
+            if (numberOfKids > 0) {
+                // Add private school tuition per child
+                forcedAdds += 35000 * numberOfKids;
+            }
+
+            const subtotalAmount = baseSubtotal + forcedAdds;
+            const finalTotal = subtotalAmount * multiplier;
+
+            // Update display
+            itemCount.textContent = `${cart.length} items`;
+            subtotal.textContent = `$${baseSubtotal.toLocaleString()}`;
+            layerMultiplier.textContent = `${multiplier}x`;
+            addedItems.textContent = `$${forcedAdds.toLocaleString()}`;
+            total.textContent = `$${finalTotal.toLocaleString()}`;
+        }
+
+        // Add random items (Surprise Me functionality)
+        function addRandomItems() {
+            const availableProducts = products.filter(p => !cart.find(c => c.id === p.id));
+            const randomCount = Math.floor(Math.random() * 3) + 1; // 1-3 items
+            
+            for (let i = 0; i < randomCount && availableProducts.length > 0; i++) {
+                const randomIndex = Math.floor(Math.random() * availableProducts.length);
+                const randomProduct = availableProducts.splice(randomIndex, 1)[0];
+                cart.push(randomProduct);
+            }
+            
+            updateCart();
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>
