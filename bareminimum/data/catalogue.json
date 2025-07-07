@@ -1,0 +1,1497 @@
+{
+  "items": [
+    {
+      "id": "rolex-submariner",
+      "name": "Rolex Submariner",
+      "category": "luxury",
+      "price": 8500,
+      "img_url": "/img/rolex-submariner.jpg",
+      "spouse_variant_price": 8500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "birkin-bag",
+      "name": "Hermès Birkin Bag",
+      "category": "luxury",
+      "price": 12000,
+      "img_url": "/img/birkin-bag.jpg",
+      "spouse_variant_price": 12000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "private-jet-membership",
+      "name": "NetJets Membership",
+      "category": "luxury",
+      "price": 150000,
+      "img_url": "/img/private-jet.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "yacht-charter",
+      "name": "Annual Yacht Charter",
+      "category": "luxury",
+      "price": 50000,
+      "img_url": "/img/yacht.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "country-club-membership",
+      "name": "Country Club Membership",
+      "category": "luxury",
+      "price": 25000,
+      "img_url": "/img/country-club.jpg",
+      "spouse_variant_price": 15000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "wine-collection",
+      "name": "Wine Collection Starter",
+      "category": "luxury",
+      "price": 10000,
+      "img_url": "/img/wine-collection.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "art-piece",
+      "name": "Contemporary Art Piece",
+      "category": "luxury",
+      "price": 35000,
+      "img_url": "/img/art-piece.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "luxury-watch-collection",
+      "name": "Watch Collection Display",
+      "category": "luxury",
+      "price": 5000,
+      "img_url": "/img/watch-display.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "designer-luggage-set",
+      "name": "Louis Vuitton Luggage Set",
+      "category": "luxury",
+      "price": 8000,
+      "img_url": "/img/lv-luggage.jpg",
+      "spouse_variant_price": 8000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "high-end-espresso-machine",
+      "name": "La Marzocco Espresso Machine",
+      "category": "luxury",
+      "price": 7000,
+      "img_url": "/img/espresso-machine.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "tesla-model-s",
+      "name": "Tesla Model S",
+      "category": "transport",
+      "price": 90000,
+      "img_url": "/img/tesla-s.jpg",
+      "spouse_variant_price": 70000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "bmw-x5",
+      "name": "BMW X5",
+      "category": "transport",
+      "price": 65000,
+      "img_url": "/img/bmw-x5.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "parking-spot-manhattan",
+      "name": "Manhattan Parking Spot",
+      "category": "transport",
+      "price": 3600,
+      "img_url": "/img/parking-spot.jpg",
+      "spouse_variant_price": 3600,
+      "kid_variant_price": null
+    },
+    {
+      "id": "uber-black-annual",
+      "name": "Uber Black Annual Budget",
+      "category": "transport",
+      "price": 12000,
+      "img_url": "/img/uber-black.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "car-detailing-subscription",
+      "name": "Monthly Car Detailing",
+      "category": "transport",
+      "price": 2400,
+      "img_url": "/img/car-detailing.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "helicopter-rides",
+      "name": "Quarterly Helicopter Rides",
+      "category": "transport",
+      "price": 8000,
+      "img_url": "/img/helicopter.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "motorcycle-harley",
+      "name": "Harley Davidson",
+      "category": "transport",
+      "price": 25000,
+      "img_url": "/img/harley.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "boat-storage",
+      "name": "Annual Boat Storage",
+      "category": "transport",
+      "price": 4000,
+      "img_url": "/img/boat-storage.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "private-driver",
+      "name": "Weekend Driver Service",
+      "category": "transport",
+      "price": 15000,
+      "img_url": "/img/driver.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "electric-bikes",
+      "name": "Premium E-Bikes (2)",
+      "category": "transport",
+      "price": 8000,
+      "img_url": "/img/e-bikes.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "manhattan-apartment",
+      "name": "Manhattan 2BR Apartment",
+      "category": "housing",
+      "price": 60000,
+      "img_url": "/img/manhattan-apt.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 24000
+    },
+    {
+      "id": "hamptons-rental",
+      "name": "Hamptons Summer House",
+      "category": "housing",
+      "price": 50000,
+      "img_url": "/img/hamptons.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "home-renovation",
+      "name": "Kitchen Renovation",
+      "category": "housing",
+      "price": 75000,
+      "img_url": "/img/kitchen.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "smart-home-system",
+      "name": "Full Smart Home System",
+      "category": "housing",
+      "price": 15000,
+      "img_url": "/img/smart-home.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "designer-furniture",
+      "name": "Designer Furniture Set",
+      "category": "housing",
+      "price": 30000,
+      "img_url": "/img/furniture.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "landscaping-annual",
+      "name": "Professional Landscaping",
+      "category": "housing",
+      "price": 12000,
+      "img_url": "/img/landscaping.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "home-theater",
+      "name": "Home Theater System",
+      "category": "housing",
+      "price": 25000,
+      "img_url": "/img/home-theater.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pool-maintenance",
+      "name": "Pool Service Annual",
+      "category": "housing",
+      "price": 6000,
+      "img_url": "/img/pool.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "wine-cellar",
+      "name": "Wine Cellar Installation",
+      "category": "housing",
+      "price": 20000,
+      "img_url": "/img/wine-cellar.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "home-security",
+      "name": "Premium Security System",
+      "category": "housing",
+      "price": 5000,
+      "img_url": "/img/security.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "house-cleaning",
+      "name": "Weekly House Cleaning",
+      "category": "services",
+      "price": 10000,
+      "img_url": "/img/cleaning.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 2000
+    },
+    {
+      "id": "personal-trainer",
+      "name": "Personal Trainer 3x/week",
+      "category": "services",
+      "price": 15000,
+      "img_url": "/img/trainer.jpg",
+      "spouse_variant_price": 15000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "nutritionist",
+      "name": "Nutritionist & Meal Prep",
+      "category": "services",
+      "price": 8000,
+      "img_url": "/img/nutritionist.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "nanny-fulltime",
+      "name": "Full-time Nanny",
+      "category": "services",
+      "price": 60000,
+      "img_url": "/img/nanny.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 60000
+    },
+    {
+      "id": "personal-assistant",
+      "name": "Part-time Assistant",
+      "category": "services",
+      "price": 25000,
+      "img_url": "/img/assistant.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "dog-walker",
+      "name": "Daily Dog Walker",
+      "category": "services",
+      "price": 6000,
+      "img_url": "/img/dog-walker.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "concierge-service",
+      "name": "Concierge Service",
+      "category": "services",
+      "price": 5000,
+      "img_url": "/img/concierge.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "stylist-personal",
+      "name": "Personal Stylist",
+      "category": "services",
+      "price": 10000,
+      "img_url": "/img/stylist.jpg",
+      "spouse_variant_price": 10000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "massage-weekly",
+      "name": "Weekly Massage",
+      "category": "services",
+      "price": 7500,
+      "img_url": "/img/massage.jpg",
+      "spouse_variant_price": 7500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "life-coach",
+      "name": "Life Coach Sessions",
+      "category": "services",
+      "price": 6000,
+      "img_url": "/img/life-coach.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "private-school-tuition",
+      "name": "Private School Tuition",
+      "category": "education",
+      "price": 35000,
+      "img_url": "/img/private-school.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 35000
+    },
+    {
+      "id": "college-fund",
+      "name": "529 College Fund Annual",
+      "category": "education",
+      "price": 20000,
+      "img_url": "/img/college-fund.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 20000
+    },
+    {
+      "id": "tutoring-services",
+      "name": "Weekly Tutoring",
+      "category": "education",
+      "price": 10000,
+      "img_url": "/img/tutoring.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 10000
+    },
+    {
+      "id": "music-lessons",
+      "name": "Piano & Violin Lessons",
+      "category": "education",
+      "price": 6000,
+      "img_url": "/img/music-lessons.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 6000
+    },
+    {
+      "id": "summer-camp",
+      "name": "Elite Summer Camp",
+      "category": "education",
+      "price": 12000,
+      "img_url": "/img/summer-camp.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 12000
+    },
+    {
+      "id": "language-immersion",
+      "name": "Language Immersion Program",
+      "category": "education",
+      "price": 8000,
+      "img_url": "/img/language.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 8000
+    },
+    {
+      "id": "coding-bootcamp",
+      "name": "Kids Coding Classes",
+      "category": "education",
+      "price": 4000,
+      "img_url": "/img/coding-kids.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 4000
+    },
+    {
+      "id": "sports-coaching",
+      "name": "Elite Sports Coaching",
+      "category": "education",
+      "price": 8000,
+      "img_url": "/img/sports-coach.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 8000
+    },
+    {
+      "id": "test-prep",
+      "name": "SAT/ACT Test Prep",
+      "category": "education",
+      "price": 5000,
+      "img_url": "/img/test-prep.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 5000
+    },
+    {
+      "id": "educational-travel",
+      "name": "Educational Travel Programs",
+      "category": "education",
+      "price": 10000,
+      "img_url": "/img/edu-travel.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 10000
+    },
+    
+    {
+      "id": "engagement-ring",
+      "name": "Tiffany Engagement Ring",
+      "category": "life-events",
+      "price": 15000,
+      "img_url": "/img/engagement-ring.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "wedding-ceremony",
+      "name": "Wedding Ceremony & Reception",
+      "category": "life-events",
+      "price": 25000,
+      "img_url": "/img/wedding.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "honeymoon-maldives",
+      "name": "Maldives Honeymoon",
+      "category": "life-events",
+      "price": 15000,
+      "img_url": "/img/honeymoon.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "baby-nursery",
+      "name": "Designer Baby Nursery",
+      "category": "life-events",
+      "price": 20000,
+      "img_url": "/img/nursery.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "birthday-party-kid",
+      "name": "Kids Birthday Party Venue",
+      "category": "life-events",
+      "price": 5000,
+      "img_url": "/img/birthday-party.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 5000
+    },
+    {
+      "id": "bar-mitzvah",
+      "name": "Bar/Bat Mitzvah Event",
+      "category": "life-events",
+      "price": 30000,
+      "img_url": "/img/bar-mitzvah.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 30000
+    },
+    {
+      "id": "graduation-party",
+      "name": "Graduation Celebration",
+      "category": "life-events",
+      "price": 10000,
+      "img_url": "/img/graduation.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 10000
+    },
+    {
+      "id": "anniversary-trip",
+      "name": "10th Anniversary Trip",
+      "category": "life-events",
+      "price": 20000,
+      "img_url": "/img/anniversary.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "family-portrait",
+      "name": "Annual Family Portraits",
+      "category": "life-events",
+      "price": 2000,
+      "img_url": "/img/family-portrait.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "holiday-cards",
+      "name": "Custom Holiday Cards",
+      "category": "life-events",
+      "price": 1000,
+      "img_url": "/img/holiday-cards.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "gym-equinox",
+      "name": "Equinox Membership",
+      "category": "health",
+      "price": 3600,
+      "img_url": "/img/equinox.jpg",
+      "spouse_variant_price": 3600,
+      "kid_variant_price": null
+    },
+    {
+      "id": "peloton-setup",
+      "name": "Peloton Bike & Subscription",
+      "category": "health",
+      "price": 2500,
+      "img_url": "/img/peloton.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "wellness-retreat",
+      "name": "Annual Wellness Retreat",
+      "category": "health",
+      "price": 8000,
+      "img_url": "/img/wellness-retreat.jpg",
+      "spouse_variant_price": 8000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "meditation-app",
+      "name": "Premium Meditation Apps",
+      "category": "health",
+      "price": 500,
+      "img_url": "/img/meditation.jpg",
+      "spouse_variant_price": 500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "organic-groceries",
+      "name": "Organic Grocery Premium",
+      "category": "health",
+      "price": 6000,
+      "img_url": "/img/organic.jpg",
+      "spouse_variant_price": 3000,
+      "kid_variant_price": 2000
+    },
+    {
+      "id": "supplements-premium",
+      "name": "Premium Supplements",
+      "category": "health",
+      "price": 2400,
+      "img_url": "/img/supplements.jpg",
+      "spouse_variant_price": 2400,
+      "kid_variant_price": null
+    },
+    {
+      "id": "dental-cosmetic",
+      "name": "Cosmetic Dentistry",
+      "category": "health",
+      "price": 10000,
+      "img_url": "/img/dental.jpg",
+      "spouse_variant_price": 10000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "therapy-weekly",
+      "name": "Weekly Therapy Sessions",
+      "category": "health",
+      "price": 10000,
+      "img_url": "/img/therapy.jpg",
+      "spouse_variant_price": 10000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "dermatologist",
+      "name": "Quarterly Derm Treatments",
+      "category": "health",
+      "price": 4000,
+      "img_url": "/img/dermatology.jpg",
+      "spouse_variant_price": 4000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "health-checkup-executive",
+      "name": "Executive Health Checkup",
+      "category": "health",
+      "price": 5000,
+      "img_url": "/img/health-checkup.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "michelin-dining",
+      "name": "Monthly Michelin Dining",
+      "category": "dining",
+      "price": 6000,
+      "img_url": "/img/michelin.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "wine-club",
+      "name": "Premium Wine Club",
+      "category": "dining",
+      "price": 3000,
+      "img_url": "/img/wine-club.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "private-chef-events",
+      "name": "Private Chef (12 events)",
+      "category": "dining",
+      "price": 12000,
+      "img_url": "/img/private-chef.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "coffee-subscription",
+      "name": "Artisan Coffee Subscription",
+      "category": "dining",
+      "price": 600,
+      "img_url": "/img/coffee.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "sushi-omakase",
+      "name": "Weekly Omakase",
+      "category": "dining",
+      "price": 15000,
+      "img_url": "/img/omakase.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "brunch-bottomless",
+      "name": "Weekend Brunch Budget",
+      "category": "dining",
+      "price": 5000,
+      "img_url": "/img/brunch.jpg",
+      "spouse_variant_price": 2500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "cocktail-parties",
+      "name": "Monthly Cocktail Parties",
+      "category": "dining",
+      "price": 6000,
+      "img_url": "/img/cocktails.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "farmers-market",
+      "name": "Weekly Farmers Market",
+      "category": "dining",
+      "price": 2500,
+      "img_url": "/img/farmers-market.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 1000
+    },
+    {
+      "id": "cooking-classes",
+      "name": "Monthly Cooking Classes",
+      "category": "dining",
+      "price": 2400,
+      "img_url": "/img/cooking-class.jpg",
+      "spouse_variant_price": 2400,
+      "kid_variant_price": null
+    },
+    {
+      "id": "food-delivery-premium",
+      "name": "Premium Food Delivery",
+      "category": "dining",
+      "price": 4000,
+      "img_url": "/img/delivery.jpg",
+      "spouse_variant_price": 2000,
+      "kid_variant_price": 1000
+    },
+    
+    {
+      "id": "designer-wardrobe",
+      "name": "Seasonal Designer Updates",
+      "category": "fashion",
+      "price": 20000,
+      "img_url": "/img/wardrobe.jpg",
+      "spouse_variant_price": 20000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "tailored-suits",
+      "name": "Custom Tailored Suits (3)",
+      "category": "fashion",
+      "price": 10000,
+      "img_url": "/img/suits.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "designer-shoes",
+      "name": "Designer Shoe Collection",
+      "category": "fashion",
+      "price": 8000,
+      "img_url": "/img/shoes.jpg",
+      "spouse_variant_price": 8000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "jewelry-collection",
+      "name": "Fine Jewelry Pieces",
+      "category": "fashion",
+      "price": 15000,
+      "img_url": "/img/jewelry.jpg",
+      "spouse_variant_price": 15000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "designer-handbags",
+      "name": "Designer Handbag Collection",
+      "category": "fashion",
+      "price": 12000,
+      "img_url": "/img/handbags.jpg",
+      "spouse_variant_price": 12000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "cashmere-collection",
+      "name": "Cashmere Essentials",
+      "category": "fashion",
+      "price": 5000,
+      "img_url": "/img/cashmere.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "athleisure-premium",
+      "name": "Lululemon Annual Budget",
+      "category": "fashion",
+      "price": 3000,
+      "img_url": "/img/athleisure.jpg",
+      "spouse_variant_price": 3000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "dry-cleaning",
+      "name": "Premium Dry Cleaning",
+      "category": "fashion",
+      "price": 2400,
+      "img_url": "/img/dry-cleaning.jpg",
+      "spouse_variant_price": 2400,
+      "kid_variant_price": null
+    },
+    {
+      "id": "personal-shopper",
+      "name": "Personal Shopper Service",
+      "category": "fashion",
+      "price": 5000,
+      "img_url": "/img/personal-shopper.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "kids-designer-clothes",
+      "name": "Kids Designer Wardrobe",
+      "category": "fashion",
+      "price": 5000,
+      "img_url": "/img/kids-fashion.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 5000
+    },
+    
+    {
+      "id": "european-vacation",
+      "name": "3-Week European Tour",
+      "category": "travel",
+      "price": 25000,
+      "img_url": "/img/europe.jpg",
+      "spouse_variant_price": 15000,
+      "kid_variant_price": 10000
+    },
+    {
+      "id": "caribbean-resort",
+      "name": "Caribbean Resort Week",
+      "category": "travel",
+      "price": 10000,
+      "img_url": "/img/caribbean.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": 3000
+    },
+    {
+      "id": "ski-aspen",
+      "name": "Aspen Ski Week",
+      "category": "travel",
+      "price": 15000,
+      "img_url": "/img/aspen.jpg",
+      "spouse_variant_price": 8000,
+      "kid_variant_price": 5000
+    },
+    {
+      "id": "safari-africa",
+      "name": "African Safari",
+      "category": "travel",
+      "price": 20000,
+      "img_url": "/img/safari.jpg",
+      "spouse_variant_price": 10000,
+      "kid_variant_price": 8000
+    },
+    {
+      "id": "japan-cherry-blossom",
+      "name": "Japan Cherry Blossom Tour",
+      "category": "travel",
+      "price": 12000,
+      "img_url": "/img/japan.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": 4000
+    },
+    {
+      "id": "weekend-getaways",
+      "name": "Monthly Weekend Getaways",
+      "category": "travel",
+      "price": 18000,
+      "img_url": "/img/weekend.jpg",
+      "spouse_variant_price": 9000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "first-class-upgrades",
+      "name": "Annual Flight Upgrades",
+      "category": "travel",
+      "price": 10000,
+      "img_url": "/img/first-class.jpg",
+      "spouse_variant_price": 10000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "hotel-loyalty-status",
+      "name": "Hotel Elite Status",
+      "category": "travel",
+      "price": 5000,
+      "img_url": "/img/hotel-elite.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "travel-insurance-premium",
+      "name": "Premium Travel Insurance",
+      "category": "travel",
+      "price": 2000,
+      "img_url": "/img/travel-insurance.jpg",
+      "spouse_variant_price": 1000,
+      "kid_variant_price": 500
+    },
+    {
+      "id": "luggage-storage-service",
+      "name": "Luggage Storage Service",
+      "category": "travel",
+      "price": 1000,
+      "img_url": "/img/luggage-storage.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "iphone-pro-max",
+      "name": "iPhone Pro Max Annual",
+      "category": "tech",
+      "price": 1500,
+      "img_url": "/img/iphone.jpg",
+      "spouse_variant_price": 1500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "macbook-pro",
+      "name": "MacBook Pro 16\"",
+      "category": "tech",
+      "price": 3500,
+      "img_url": "/img/macbook.jpg",
+      "spouse_variant_price": 3500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "home-automation",
+      "name": "Smart Home Ecosystem",
+      "category": "tech",
+      "price": 8000,
+      "img_url": "/img/smart-home-tech.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "gaming-setup",
+      "name": "Ultimate Gaming Setup",
+      "category": "tech",
+      "price": 5000,
+      "img_url": "/img/gaming.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 3000
+    },
+    {
+      "id": "home-office-premium",
+      "name": "Premium Home Office",
+      "category": "tech",
+      "price": 10000,
+      "img_url": "/img/home-office.jpg",
+      "spouse_variant_price": 10000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "streaming-subscriptions",
+      "name": "All Streaming Services",
+      "category": "tech",
+      "price": 1000,
+      "img_url": "/img/streaming.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "smart-watch",
+      "name": "Apple Watch Ultra",
+      "category": "tech",
+      "price": 800,
+      "img_url": "/img/apple-watch.jpg",
+      "spouse_variant_price": 800,
+      "kid_variant_price": null
+    },
+    {
+      "id": "noise-cancelling-headphones",
+      "name": "Premium Headphones",
+      "category": "tech",
+      "price": 500,
+      "img_url": "/img/headphones.jpg",
+      "spouse_variant_price": 500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "drone-professional",
+      "name": "Professional Drone",
+      "category": "tech",
+      "price": 2000,
+      "img_url": "/img/drone.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "vr-setup",
+      "name": "VR Gaming System",
+      "category": "tech",
+      "price": 1500,
+      "img_url": "/img/vr.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 1500
+    },
+    
+    {
+      "id": "golf-clubs-premium",
+      "name": "Premium Golf Club Set",
+      "category": "hobbies",
+      "price": 5000,
+      "img_url": "/img/golf-clubs.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "tennis-membership",
+      "name": "Tennis Club Membership",
+      "category": "hobbies",
+      "price": 6000,
+      "img_url": "/img/tennis.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": 3000
+    },
+    {
+      "id": "photography-equipment",
+      "name": "Pro Photography Gear",
+      "category": "hobbies",
+      "price": 8000,
+      "img_url": "/img/camera.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "music-studio",
+      "name": "Home Music Studio",
+      "category": "hobbies",
+      "price": 10000,
+      "img_url": "/img/music-studio.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "book-collection",
+      "name": "Rare Book Collection",
+      "category": "hobbies",
+      "price": 5000,
+      "img_url": "/img/books.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "cycling-carbon-bike",
+      "name": "Carbon Fiber Road Bike",
+      "category": "hobbies",
+      "price": 6000,
+      "img_url": "/img/bike.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "sailing-lessons",
+      "name": "Sailing Certification",
+      "category": "hobbies",
+      "price": 3000,
+      "img_url": "/img/sailing.jpg",
+      "spouse_variant_price": 3000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "woodworking-shop",
+      "name": "Woodworking Equipment",
+      "category": "hobbies",
+      "price": 8000,
+      "img_url": "/img/woodworking.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "gardening-greenhouse",
+      "name": "Backyard Greenhouse",
+      "category": "hobbies",
+      "price": 5000,
+      "img_url": "/img/greenhouse.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "board-game-collection",
+      "name": "Designer Board Games",
+      "category": "hobbies",
+      "price": 2000,
+      "img_url": "/img/board-games.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 1000
+    },
+    
+    {
+      "id": "theater-season-tickets",
+      "name": "Broadway Season Tickets",
+      "category": "entertainment",
+      "price": 5000,
+      "img_url": "/img/broadway.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "concert-vip",
+      "name": "VIP Concert Experiences",
+      "category": "entertainment",
+      "price": 6000,
+      "img_url": "/img/concert.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "sports-season-tickets",
+      "name": "NBA/NFL Season Tickets",
+      "category": "entertainment",
+      "price": 10000,
+      "img_url": "/img/sports-tickets.jpg",
+      "spouse_variant_price": 5000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "comedy-club-table",
+      "name": "Comedy Club VIP Table",
+      "category": "entertainment",
+      "price": 3000,
+      "img_url": "/img/comedy.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "museum-memberships",
+      "name": "All Museum Memberships",
+      "category": "entertainment",
+      "price": 2000,
+      "img_url": "/img/museum.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 500
+    },
+    {
+      "id": "film-festival-passes",
+      "name": "Film Festival VIP Passes",
+      "category": "entertainment",
+      "price": 4000,
+      "img_url": "/img/film-festival.jpg",
+      "spouse_variant_price": 4000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "escape-room-parties",
+      "name": "Monthly Escape Rooms",
+      "category": "entertainment",
+      "price": 1500,
+      "img_url": "/img/escape-room.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 1500
+    },
+    {
+      "id": "amusement-park-passes",
+      "name": "Theme Park Annual Passes",
+      "category": "entertainment",
+      "price": 2000,
+      "img_url": "/img/theme-park.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 2000
+    },
+    {
+      "id": "opera-box-seats",
+      "name": "Opera Box Seats",
+      "category": "entertainment",
+      "price": 6000,
+      "img_url": "/img/opera.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "gaming-arcade-credits",
+      "name": "Arcade & Gaming Credits",
+      "category": "entertainment",
+      "price": 1000,
+      "img_url": "/img/arcade.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 1000
+    },
+    
+    {
+      "id": "charity-gala-tables",
+      "name": "Charity Gala Tables",
+      "category": "philanthropy",
+      "price": 20000,
+      "img_url": "/img/gala.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "foundation-donation",
+      "name": "Annual Foundation Gift",
+      "category": "philanthropy",
+      "price": 25000,
+      "img_url": "/img/foundation.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "scholarship-fund",
+      "name": "Student Scholarship Fund",
+      "category": "philanthropy",
+      "price": 10000,
+      "img_url": "/img/scholarship.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "hospital-wing-naming",
+      "name": "Hospital Wing Naming",
+      "category": "philanthropy",
+      "price": 100000,
+      "img_url": "/img/hospital.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "arts-patron",
+      "name": "Arts Organization Patron",
+      "category": "philanthropy",
+      "price": 15000,
+      "img_url": "/img/arts-patron.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "environmental-fund",
+      "name": "Environmental Initiative",
+      "category": "philanthropy",
+      "price": 10000,
+      "img_url": "/img/environment.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "political-donations",
+      "name": "Political Contributions",
+      "category": "philanthropy",
+      "price": 5000,
+      "img_url": "/img/politics.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "animal-shelter",
+      "name": "Animal Shelter Support",
+      "category": "philanthropy",
+      "price": 5000,
+      "img_url": "/img/animal-shelter.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "youth-sports-sponsor",
+      "name": "Youth Sports Sponsorship",
+      "category": "philanthropy",
+      "price": 8000,
+      "img_url": "/img/youth-sports.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "disaster-relief",
+      "name": "Disaster Relief Fund",
+      "category": "philanthropy",
+      "price": 5000,
+      "img_url": "/img/disaster-relief.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "purebred-dog",
+      "name": "Purebred Puppy",
+      "category": "pets",
+      "price": 3000,
+      "img_url": "/img/puppy.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-insurance-premium",
+      "name": "Premium Pet Insurance",
+      "category": "pets",
+      "price": 2000,
+      "img_url": "/img/pet-insurance.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-grooming",
+      "name": "Monthly Pet Grooming",
+      "category": "pets",
+      "price": 1200,
+      "img_url": "/img/grooming.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-daycare",
+      "name": "Pet Daycare Service",
+      "category": "pets",
+      "price": 6000,
+      "img_url": "/img/pet-daycare.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-trainer",
+      "name": "Professional Pet Training",
+      "category": "pets",
+      "price": 3000,
+      "img_url": "/img/pet-training.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-spa-treatments",
+      "name": "Pet Spa Treatments",
+      "category": "pets",
+      "price": 2000,
+      "img_url": "/img/pet-spa.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "exotic-pet",
+      "name": "Exotic Pet & Habitat",
+      "category": "pets",
+      "price": 5000,
+      "img_url": "/img/exotic-pet.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-food-premium",
+      "name": "Premium Pet Food",
+      "category": "pets",
+      "price": 1500,
+      "img_url": "/img/pet-food.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-toys-accessories",
+      "name": "Designer Pet Accessories",
+      "category": "pets",
+      "price": 1000,
+      "img_url": "/img/pet-toys.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "pet-boarding-luxury",
+      "name": "Luxury Pet Boarding",
+      "category": "pets",
+      "price": 3000,
+      "img_url": "/img/pet-boarding.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    
+    {
+      "id": "financial-advisor",
+      "name": "Wealth Management Fee",
+      "category": "finance",
+      "price": 10000,
+      "img_url": "/img/advisor.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "tax-preparation",
+      "name": "Premium Tax Services",
+      "category": "finance",
+      "price": 5000,
+      "img_url": "/img/tax.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "estate-planning",
+      "name": "Estate Planning Services",
+      "category": "finance",
+      "price": 8000,
+      "img_url": "/img/estate.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "life-insurance-premium",
+      "name": "Life Insurance Premium",
+      "category": "finance",
+      "price": 6000,
+      "img_url": "/img/life-insurance.jpg",
+      "spouse_variant_price": 6000,
+      "kid_variant_price": null
+    },
+    {
+      "id": "umbrella-insurance",
+      "name": "Umbrella Insurance Policy",
+      "category": "finance",
+      "price": 2000,
+      "img_url": "/img/umbrella.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "investment-portfolio",
+      "name": "Managed Portfolio Fees",
+      "category": "finance",
+      "price": 15000,
+      "img_url": "/img/portfolio.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "legal-retainer",
+      "name": "Legal Services Retainer",
+      "category": "finance",
+      "price": 10000,
+      "img_url": "/img/legal.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    },
+    {
+      "id": "emergency-fund",
+      "name": "Emergency Fund Build",
+      "category": "finance",
+      "price": 20000,
+      "img_url": "/img/emergency.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": 10000
+    },
+    {
+      "id": "retirement-maxout",
+      "name": "401k/IRA Max Contribution",
+      "category": "finance",
+      "price": 22500,
+      "img_url": "/img/retirement.jpg",
+      "spouse_variant_price": 22500,
+      "kid_variant_price": null
+    },
+    {
+      "id": "crypto-portfolio",
+      "name": "Crypto Investment",
+      "category": "finance",
+      "price": 10000,
+      "img_url": "/img/crypto.jpg",
+      "spouse_variant_price": null,
+      "kid_variant_price": null
+    }
+  ],
+  "categories": [
+    "luxury",
+    "transport", 
+    "housing",
+    "services",
+    "education",
+    "life-events",
+    "health",
+    "dining",
+    "fashion",
+    "travel",
+    "tech",
+    "hobbies",
+    "entertainment",
+    "philanthropy",
+    "pets",
+    "finance"
+  ],
+  "forced_adds": {
+    "married": [
+      {
+        "id": "engagement-ring",
+        "quantity": 1
+      },
+      {
+        "id": "wedding-ceremony",
+        "quantity": 1
+      }
+    ],
+    "kids": {
+      "per_child": [
+        {
+          "id": "private-school-tuition",
+          "quantity": 1
+        }
+      ]
+    }
+  }
+}
