@@ -64,7 +64,11 @@ class AgentETATracker:
             return self.expected_duration
             
         elapsed = time.time() - self.start_time
-        progress = self.current_step / self.total_steps
+        # Avoid ZeroDivisionError when total_steps is zero or negative
+        if self.total_steps <= 0:
+            # With no notion of total steps, fall back to expected_duration minus elapsed
+            return max(0, self.expected_duration - elapsed)
+        progress = self.current_step / self.total_steps if self.total_steps > 0 else 0
         
         if progress > 0:
             # Estimate based on current progress
@@ -87,7 +91,8 @@ class AgentETATracker:
             "tokens_used": self.tokens_used,
             "tokens_expected": self.tokens_expected,
             "elapsed_seconds": round(elapsed),
-            "progress_percent": round((self.current_step / self.total_steps) * 100),
+            # Guard division by zero – report 0 % progress when total_steps is not positive
+            "progress_percent": 0 if self.total_steps <= 0 else round((self.current_step / self.total_steps) * 100),
             "current_description": self.step_descriptions.get(self.current_step, "")
         }
         

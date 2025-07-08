@@ -1,86 +1,68 @@
-ETA-Timer for Cursor - Know When Your Coffee Is Safe
+# Cursor-ETA ‑ Know When the Agent Finishes
 
-What it does
-Slaps a live “≈ETA xx s” read-out on your Cursor Agent runs so you can walk away without gambling on how long the LLM will churn.
+Cursor-ETA shows a live *≈ETA* timer and progress bar for long-running Cursor AI agent runs. It adds **zero token overhead** and works both in the terminal and through an optional VS Code status-bar extension.
 
-Why you should care
+---
 
-Pain	How ETA-Timer fixes it
-Blind waits – You launch an Agent run and have no clue if it’ll finish before your screen locks.	One-line countdown right in the Agent panel (or status-bar widget if you install the VS Code extension).
-Interrupt anxiety – You hover, wondering if killing the run will save time or waste more.	Live progress (tokens generated, steps remaining) tells you whether to bail or grab water.
-Wasted tokens for “progress” chatter – Asking the model itself to predict time burns tokens and is wrong anyway.	Timing happens outside the LLM, so token cost = 0.
+## Features
+* Real-time ETA (seconds / minutes / hours)
+* Progress bar with **current step / total steps**
+* Live token counter
+* JSON `STATUS|…` messages for machine consumption (used by the VS Code extension)
+* Decorator `@track_agent` for one-liner integration
+* Pure-Python, **no external dependencies**
 
+---
 
-⸻
+## Quick Start
+```bash
+# 1. Install from source (PyPI publication coming later)
+pip install -e cursor-eta-indicator
 
-Quick install (60 s)
+# 2. Use in your agent code
+from cursor_eta import track_agent
 
-# 1. drop the Python wrapper somewhere in your repo
-curl -o .cursor/eta_wrapper.py https://raw.githubusercontent.com/you/eta-timer/main/eta_wrapper.py
+@track_agent(steps=5, duration=20.0)
+def my_agent():
+    ...
 
-# 2. tell Cursor to use it
-export CURSOR_AGENT_WRAPPER=".cursor/eta_wrapper.py"
+my_agent()
 
-# 3. (optional) VS Code status-bar bling
-code --install-extension eta-timer-statusbar.vsix
+# 3. Optional – show status in VS Code
+a) cd cursor-eta-indicator/vscode-extension
+b) npm install && npm run package
+c) code --install-extension cursor-eta-*.vsix
+```
 
-No rebuilds, no system-prompt hacks, no extra OpenAI params. Done.
+Run the built-in demo:
+```bash
+python -m cursor_eta --demo
+```
 
-⸻
+---
 
-What you’ll see
+## How It Works
+```mermaid
+graph LR
+    A[Your Agent Code] --decorated--> B[AgentWrapper.execute_with_eta]
+    B --> C[AgentETATracker.start]
+    C --> D[Background Update Thread]
+    D --> E{{\"STATUS|{…}\" on stdout}}
+    D --> F[/ETA line on stderr/]
+    E -->|Parse| G[VS Code Extension]
+```
+* The tracker starts a background thread that emits human-readable updates to `stderr` and machine-readable JSON to `stdout`.
+* The VS Code extension listens for `STATUS|…` lines and shows a status-bar item.
 
-≈ETA 18 s | 1/2 steps | 0/900 tok
- 5s elapsed | 430/900 tok | ≈9 s left
-✅ Done in 15 s | 2 edits, 1 test pass
+---
 
-In the GUI: a slim status-bar item mirrors the same text; hover for a fuller breakdown.
+## Roadmap / Known Limitations
+1. **Dynamic Token Rate** – current ETA assumes linear token-per-second throughput; spiky model latency can skew early estimates.
+2. **Branchy Agents** – adding new steps on the fly will stretch ETA; we plan adaptive re-estimation.
+3. **PyPI Release** – publish `cursor-eta` once the API stabilises.
+4. **Native Cursor Integration** – auto-inject wrapper without env-vars.
 
-⸻
+---
 
-How it works (in plain English)
-	1.	Counts tokens before the call.
-tiktoken tells us how many input tokens we’re sending and guesses output length (1.1× heuristic).
-	2.	Divides by the rolling median TPS you hit on this model tier (captured automatically after each run).
-	3.	Prints + rewrites a single console line every second using \r. Cursor’s Agent panel auto-refreshes it.
-	4.	Optional VS Code extension reads those lines and rewires them into a status-bar widget. No sockets; just standard stdin.
-
-Zero tokens, zero latency overhead, no apology-spam from the model.
-
-⸻
-
-Configuration knobs
-
-Env Var / Flag	Default	What it does
-ETA_TPS_DEFAULT	60	Fallback tokens-per-second for the first run on a new engine.
-ETA_FILE_STEP_SEC	0.5	Assumed cost of each Planner/Executor file-edit or test step.
-ETA_NOTIFY_THRESHOLD_SEC	30	If ETA > threshold, sends a desktop notification and hides the timer.
-
-Edit these in eta_wrapper.py or export them from your shell rc.
-
-⸻
-
-Caveats (don’t say we didn’t warn you)
-	•	Queue spikes: If OpenAI throttles, first token can get stuck. Timer corrects once streaming begins, but initial ETA may be optimistic.
-	•	Branchy agents: If your Planner suddenly spawns five extra calls, ETA stretches. Wrapper updates every step, but expect jumps.
-	•	Local models: TPS varies with thermals; let a few runs collect before trusting numbers.
-
-⸻
-
-Uninstall
-
-rm .cursor/eta_wrapper.py
-unset CURSOR_AGENT_WRAPPER
-code --uninstall-extension eta-timer-statusbar
-
-That’s it—Cursor goes back to silent treatments.
-
-⸻
-
-License
-
-MIT. Fork it, rip it apart, tattoo it on your dog—whatever.
-
-⸻
-
-Stop hovering, start timing.
+## License
+MIT © Cursor ETA Contributors
